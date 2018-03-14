@@ -13,6 +13,7 @@
      * TODO: Figure out how not to have a bottom border on the last time-slot
      * which causes a double border
      */
+     
 }
 .time-slot__hour-label {
     width: 4rem;
@@ -27,8 +28,10 @@
 .time-slot__events {
     padding: 0.5rem;
     flex: 1;
-
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
 }
 .time-slot__event {
     margin: 0.5rem;
@@ -37,4 +40,11 @@
 
 @media screen and (min-width: 50rem) {
     /* Override styles for larger screens here */
+    .time-slot__events {
+        flex-flow: row wrap;
+    }
+
+    .time-slot__event {
+        flex: 1;
+    }
 }

@@ -4,6 +4,7 @@
  */
 .time-slot-event {
     display: block;
+    width: 100%;
     cursor: pointer;
     border: 1px solid transparent;
     padding: 0.5rem;
@@ -12,6 +13,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 100%;
+    border-radius: 8px;
 }
 .time-slot-event::-moz-focus-inner {
   border: 0;
