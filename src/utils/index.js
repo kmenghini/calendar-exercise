@@ -40,11 +40,7 @@ export const filterEventsByHour = (events, hour) => (
  * @returns {string} The formatted date
  */
 export const getDisplayDate = (timestamp) => {
-    let date = new Date(timestamp);
-
-    // TODO: Format the date like: "Tuesday, April 11, 2017"
-
-    return date.toString();
+    return moment(timestamp).format('dddd, LL');
 };
 
 /**
