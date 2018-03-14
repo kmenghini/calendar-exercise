@@ -4,6 +4,7 @@ import EventDetailOverlay from './EventDetailOverlay';
 import {filterEventsByDay, getEventFromEvents, getDisplayDate} from '../utils';
 import DATA_SET from '../utils/data';
 import {MILLISECONDS_DAY} from '../utils/constants';
+import $ from 'jquery';
 
 import './Page.css';
 
@@ -44,6 +45,7 @@ export default class Page extends PureComponent {
 
     _handleEventDetailOverlayClose() {
         this.setState({selectedEventId: undefined});
+        $(document.body).removeClass('no-scroll');
     }
 
     _handlePrev() {
@@ -67,6 +69,7 @@ export default class Page extends PureComponent {
                     onClose={this._handleEventDetailOverlayClose.bind(this)}
                 />
             );
+            $(document.body).addClass('no-scroll');
         }
 
         return (
