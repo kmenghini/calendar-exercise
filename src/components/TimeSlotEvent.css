@@ -40,3 +40,7 @@
     background-color: #009e60;
     border-color: #003800;
 }
+.time-slot-event--grey {
+    background-color: rgb(150, 149, 149);
+    border-color: rgb(51, 50, 50)
+}

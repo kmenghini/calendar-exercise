@@ -11,15 +11,14 @@ export default class TimeSlotEvent extends PureComponent {
 
     render() {
         let {
-            event: {title, color},
+            event: {title, color, start},
             onSelect,
         } = this.props;
-
-        // TODO: Need a way to determine that the event is in the past so that it
-        // can be displayed faded-out
+       
+        let eventColor = (start < Date.now()) ? `grey` : color;
 
         return (
-            <button className={`time-slot-event time-slot-event--${color}`} onClick={onSelect}>
+            <button className={`time-slot-event time-slot-event--${eventColor}`} onClick={onSelect}>
                 {title}
             </button>
         );
