@@ -10,6 +10,19 @@ export default class EventDetailOverlay extends PureComponent {
         onClose: PropTypes.func.isRequired
     }
 
+    handleKeydown(event) {
+        if (event.keyCode === 27) {
+            this.props.onClose();
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener('keydown', this.handleKeydown.bind(this));
+      }
+    componentWillUnmount(){
+        document.removeEventListener('keydown', this.handleKeydown.bind(this));
+    }
+
     render() {
         let {event, onClose} = this.props;
         let {title, description, start, color, hours} = event;
