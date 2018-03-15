@@ -41,6 +41,7 @@ export default class Page extends PureComponent {
 
     _handleSelectEvent(selectedEventId) {
         this.setState({selectedEventId});
+        $(document.body).addClass('no-scroll');
     }
 
     _handleEventDetailOverlayClose() {
@@ -69,7 +70,6 @@ export default class Page extends PureComponent {
                     onClose={this._handleEventDetailOverlayClose.bind(this)}
                 />
             );
-            $(document.body).addClass('no-scroll');
         }
 
         return (
