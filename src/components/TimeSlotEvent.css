@@ -1,9 +1,9 @@
 /*
- * TODO: Time slot events should have rounded corners
  * TODO: Past events should display faded-out
  */
 .time-slot-event {
     display: block;
+    width: 100%;
     cursor: pointer;
     border: 1px solid transparent;
     padding: 0.5rem;
@@ -12,6 +12,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 100%;
+    border-radius: 8px;
 }
 .time-slot-event::-moz-focus-inner {
   border: 0;
@@ -38,4 +39,8 @@
 .time-slot-event--shamrock {
     background-color: #009e60;
     border-color: #003800;
+}
+.past-event-true {
+    filter: saturate(30%);
+    color: rgb(43, 43, 43);
 }

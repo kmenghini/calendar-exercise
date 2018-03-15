@@ -3,6 +3,8 @@ import Calendar from './Calendar';
 import EventDetailOverlay from './EventDetailOverlay';
 import {filterEventsByDay, getEventFromEvents, getDisplayDate} from '../utils';
 import DATA_SET from '../utils/data';
+import {MILLISECONDS_DAY} from '../utils/constants';
+import $ from 'jquery';
 
 import './Page.css';
 
@@ -39,18 +41,20 @@ export default class Page extends PureComponent {
 
     _handleSelectEvent(selectedEventId) {
         this.setState({selectedEventId});
+        $(document.body).addClass('no-scroll');
     }
 
     _handleEventDetailOverlayClose() {
         this.setState({selectedEventId: undefined});
+        $(document.body).removeClass('no-scroll');
     }
 
     _handlePrev() {
-        // TODO: Update this.state.day to go back 1 day so previous button works
+        this.setState({day: this.state.day - MILLISECONDS_DAY});
     }
 
     _handleNext() {
-        // TODO: Update this.state.day to go forward 1 day so next button works
+        this.setState({day: this.state.day + MILLISECONDS_DAY});
     }
 
     render() {

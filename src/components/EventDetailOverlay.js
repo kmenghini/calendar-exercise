@@ -10,6 +10,32 @@ export default class EventDetailOverlay extends PureComponent {
         onClose: PropTypes.func.isRequired
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', this.handleKeydown.bind(this));
+        document.addEventListener('mousedown', this.handleClickOutside.bind(this));
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeydown.bind(this));
+        document.removeEventListener('mousedown', this.handleClickOutside.bind(this));
+    }
+
+    setWrapperRef(node) {
+        this.wrapperRef = node;
+    }
+
+    handleKeydown(event) {
+        if (event.keyCode === 27) {
+            this.props.onClose();
+        }
+    }
+
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+            this.props.onClose();
+        }
+    }
+
     render() {
         let {event, onClose} = this.props;
         let {title, description, start, color, hours} = event;
@@ -24,23 +50,19 @@ export default class EventDetailOverlay extends PureComponent {
 
         let displayDateTime = `${displayDate} ${startHourDisplay} - ${endHourDisplay}`;
 
-        // TODO: The event label color should match the event color
-        // TODO: Add appropriate ARIA tags to overlay/dialog
-        // TODO: Support clicking outside of the overlay to close it
-        // TODO: Support clicking ESC to close it
         return (
-            <section className="event-detail-overlay">
+            <section className="event-detail-overlay" ref={this.setWrapperRef.bind(this)}>
                 <div className="event-detail-overlay__container">
                     <button
                         className="event-detail-overlay__close"
                         title="Close detail view"
+                        aria-label="Close"
                         onClick={onClose}
                     />
                     <div>
                         {displayDateTime}
                         <span
-                            className="event-detail-overlay__color"
-                            title={`Event label color: ${color}`}
+                            className={`event-detail-overlay__color event-detail-overlay--${color}`}
                         />
                     </div>
                     <h1 className="event-detail-overlay__title">

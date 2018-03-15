@@ -5,11 +5,11 @@
 
 .page {
     margin: 1rem;
+    background: linear-gradient(white, lightgray);
 }
 .page__header {
     margin-bottom: 1rem;
 }
-
 .page__nav {
     display: flex;
     justify-content: space-between;
