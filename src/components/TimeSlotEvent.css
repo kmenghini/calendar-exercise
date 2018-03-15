@@ -44,3 +44,7 @@
     background-color: rgb(150, 149, 149);
     border-color: rgb(51, 50, 50)
 }
+.past-event-true {
+    filter: saturate(30%);
+    color: rgb(43, 43, 43);
+}

@@ -15,10 +15,10 @@ export default class TimeSlotEvent extends PureComponent {
             onSelect,
         } = this.props;
        
-        let eventColor = (start < Date.now()) ? `grey` : color;
+        let pastEvent = start < Date.now();
 
         return (
-            <button className={`time-slot-event time-slot-event--${eventColor}`} onClick={onSelect}>
+            <button className={`time-slot-event time-slot-event--${color} past-event-${pastEvent}`} onClick={onSelect}>
                 {title}
             </button>
         );
