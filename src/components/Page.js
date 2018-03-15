@@ -62,6 +62,7 @@ export default class Page extends PureComponent {
         let filteredEvents = filterEventsByDay(events, day);
         let selectedEvent = getEventFromEvents(events, selectedEventId);
         let eventDetailOverlay;
+        let pageClickHandler;
 
         if (selectedEvent) {
             eventDetailOverlay = (
@@ -70,10 +71,11 @@ export default class Page extends PureComponent {
                     onClose={this._handleEventDetailOverlayClose.bind(this)}
                 />
             );
+            pageClickHandler = this._handleEventDetailOverlayClose.bind(this)
         }
 
         return (
-            <div className="page">
+            <div className="page" onClick={pageClickHandler}>
                 <header className="page__header">
                     <h1 className="page__title">Daily Agenda</h1>
                 </header>
