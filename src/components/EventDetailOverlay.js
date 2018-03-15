@@ -16,10 +16,11 @@ export default class EventDetailOverlay extends PureComponent {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         document.addEventListener('keydown', this.handleKeydown.bind(this));
-      }
-    componentWillUnmount(){
+    }
+
+    componentWillUnmount() {
         document.removeEventListener('keydown', this.handleKeydown.bind(this));
     }
 
