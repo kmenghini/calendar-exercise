@@ -42,13 +42,11 @@ export const getDisplayDate = (timestamp) => moment(timestamp).format('dddd, LL'
  * @returns {string}
  */
 export const getDisplayHour = (hour) => {
-    if (hour === 0) {
-        hour = '12AM';
-    } else if (hour > 12) {
+    if (hour >= 12) {
         hour -= 12;
-        hour += 'PM';
+        hour ? hour += 'PM' : hour = '12PM';
     } else {
-        hour += 'AM';
+        hour ? hour += 'AM' : hour = '12AM';
     }
     return hour;
 };
