@@ -1,8 +1,3 @@
-/*
- * TODO: page needs a gradient from white (top) to light gray (bottom)
- * TODO: On narrow screens the background shouldn't scroll when detail overlay is shown
- */
-
 .page {
     margin: 1rem;
     background: linear-gradient(white, lightgray);
@@ -44,4 +39,31 @@
 }
 .page__next-day::after {
     content: '▶︎';
+}
+
+.overlay-animation-enter {
+    top: 100%;
+}
+  
+.overlay-animation-enter.overlay-animation-enter-active {
+    top: 0;
+    transition: top 500ms ease-out;
+}
+
+.overlay-animation-leave {
+    top: 0;
+}
+
+.overlay-animation-leave.overlay-animation-leave-active {
+    top: 100%;
+    transition: top 300ms ease-in;
+}
+
+@media (min-width: 50rem) {
+    .overlay-animation-enter.overlay-animation-enter-active {
+        top: 75%;
+    }
+    .overlay-animation-leave {        
+        top: 75%;
+    }
 }

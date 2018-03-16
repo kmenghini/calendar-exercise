@@ -5,6 +5,7 @@ import {filterEventsByDay, getEventFromEvents, getDisplayDate} from '../utils';
 import DATA_SET from '../utils/data';
 import {MILLISECONDS_DAY} from '../utils/constants';
 import $ from 'jquery';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './Page.css';
 
@@ -41,12 +42,12 @@ export default class Page extends PureComponent {
 
     _handleSelectEvent(selectedEventId) {
         this.setState({selectedEventId});
-        $(document.body).addClass('no-scroll');
+        $(document.body).addClass('overlay-open');
     }
 
     _handleEventDetailOverlayClose() {
         this.setState({selectedEventId: undefined});
-        $(document.body).removeClass('no-scroll');
+        $(document.body).removeClass('overlay-open');
     }
 
     _handlePrev() {
@@ -86,7 +87,13 @@ export default class Page extends PureComponent {
                     events={filteredEvents}
                     onSelectEvent={this._handleSelectEvent.bind(this)}
                 />
-                {eventDetailOverlay}
+                <ReactCSSTransitionGroup
+                    transitionName="overlay-animation"
+                    transitionEnterTimeout={1000}
+                    transitionLeaveTimeout={300}
+                >
+                    {eventDetailOverlay}
+                </ReactCSSTransitionGroup>
             </div>
         );
     }
