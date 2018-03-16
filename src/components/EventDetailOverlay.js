@@ -11,27 +11,27 @@ export default class EventDetailOverlay extends PureComponent {
     }
 
     componentDidMount() {
-        document.addEventListener('keydown', this.handleKeydown.bind(this));
-        document.addEventListener('mousedown', this.handleClickOutside.bind(this));
+        document.addEventListener('keydown', this._handleKeydown.bind(this));
+        document.addEventListener('mousedown', this._handleClickOutside.bind(this));
     }
 
     componentWillUnmount() {
-        document.removeEventListener('keydown', this.handleKeydown.bind(this));
-        document.removeEventListener('mousedown', this.handleClickOutside.bind(this));
+        document.removeEventListener('keydown', this._handleKeydown.bind(this));
+        document.removeEventListener('mousedown', this._handleClickOutside.bind(this));
     }
 
-    setWrapperRef(node) {
-        this.wrapperRef = node;
+    _handleOverlayRef(node) {
+        this.overlayRef = node;
     }
 
-    handleKeydown(event) {
+    _handleKeydown(event) {
         if (event.keyCode === 27) {
             this.props.onClose();
         }
     }
 
-    handleClickOutside(event) {
-        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+    _handleClickOutside(event) {
+        if (this.overlayRef && !this.overlayRef.contains(event.target)) {
             this.props.onClose();
         }
     }
@@ -51,7 +51,7 @@ export default class EventDetailOverlay extends PureComponent {
         let displayDateTime = `${displayDate} ${startHourDisplay} - ${endHourDisplay}`;
 
         return (
-            <section className="event-detail-overlay" ref={this.setWrapperRef.bind(this)}>
+            <section className="event-detail-overlay" ref={this._handleOverlayRef.bind(this)}>
                 <div className="event-detail-overlay__container">
                     <button
                         className="event-detail-overlay__close"

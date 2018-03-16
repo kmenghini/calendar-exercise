@@ -82,7 +82,10 @@ export default class Page extends PureComponent {
                     onPrev={this._handlePrev.bind(this)}
                     onNext={this._handleNext.bind(this)}
                 />
-                <Calendar events={filteredEvents} onSelectEvent={this._handleSelectEvent.bind(this)} />
+                <Calendar
+                    events={filteredEvents}
+                    onSelectEvent={this._handleSelectEvent.bind(this)}
+                />
                 {eventDetailOverlay}
             </div>
         );
